@@ -48,8 +48,9 @@ export default function SampleSaga(props: iSampleSagaProps) {
   }, []);
 
   React.useEffect(() => {
-    // = componentDidMount
-  }, [photos]);
+    // Watch redux for set to context isLoading
+    ctx.setContextState({ isLoading: isLoading });
+  }, [isLoading]);
 
   const ReDispatch = () => {
     dispatch({
@@ -63,14 +64,17 @@ export default function SampleSaga(props: iSampleSagaProps) {
   // Render alway run on both side server and client
   return (
     <Layout>
-      <GlobalLoading visible={isLoading} />
       <Button variant='contained' color='success' onClick={ReDispatch}>
         Re-Dispatch
       </Button>
       <Grid container justifyContent='center' spacing={2}>
         <Grid item xs={6} md={12}></Grid>
         <Grid item xs={6} md={12}>
-          {photos.length > 0 ? jsxPhotos : <StickyLoading visible={isLoading} />}
+          {photos.length > 0 ? (
+            jsxPhotos
+          ) : (
+            <StickyLoading visible={isLoading} />
+          )}
         </Grid>
       </Grid>
     </Layout>
