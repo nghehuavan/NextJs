@@ -1,17 +1,17 @@
 import * as React from 'react';
 import Link from 'next/link';
-import mocklasbApis from '../../apis/mocklabApis';
 import { Button, Grid } from '@mui/material';
-import { appContext } from '../../context/context-provider';
+import { appContext } from '../../contexts/context-provider';
 import Layout from '../../layouts/layout';
 import { useRouter } from 'next/dist/client/router';
-import StickyLoading from '../../context/sticky-loading';
+import sampleApi from '../../apis/sampleApi';
+import StickyLoading from '../../layouts/components/sticky-loading';
 
-export interface IndexAppProps {
+export interface iSampleProps {
   children: React.ReactNode;
 }
 
-export default function Index(props: IndexAppProps) {
+export default function Sample(props: iSampleProps) {
   // React-Router
   // const history = useHistory();
   // const location = useLocation();
@@ -34,11 +34,11 @@ export default function Index(props: IndexAppProps) {
   const ctx = React.useContext(appContext);
 
   const fetchData = async () => {
-    ctx.setState({ isLoading: true });
+    ctx.setContextState({ isLoading: true });
     setSticky(true);
-    const data = await mocklasbApis.getData({ _limit: 5 });
+    const data = await sampleApi.getData({ _limit: 5 });
     setPhotos(data);
-    ctx.setState({ isLoading: false });
+    ctx.setContextState({ isLoading: false });
     setSticky(false);
   };
 
@@ -118,20 +118,25 @@ export default function Index(props: IndexAppProps) {
           home
         </Button>
       </Link>
-      <Link href='/try'>
+      <Link href='/sample'>
         <Button variant='contained' color='success'>
-          index
+          sample
         </Button>
       </Link>
-      <Link href='/try/index-ssr'>
+      <Link href='/sample/ssr'>
         <Button variant='contained' color='success'>
-          index-ssr
+          sample-ssr
         </Button>
       </Link>
       <Button variant='contained' color='success' onClick={shadowLink}>
-        index-ssr-shadow
+        sample-ssr-shadow
       </Button>
-      <Grid container justifyContent="center" spacing={2}>
+      <Link href='/sample/saga'>
+        <Button variant='contained' color='success'>
+          sample-saga
+        </Button>
+      </Link>
+      <Grid container justifyContent='center' spacing={2}>
         <Grid item xs={6} md={12}></Grid>
         <Grid item xs={6} md={12}>
           {photos.length > 0 ? jsxPhotos : <StickyLoading visible={sticky} />}

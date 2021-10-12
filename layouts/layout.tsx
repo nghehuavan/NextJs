@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { appContext } from '../context/context-provider';
-import StickyLoading from '../context/context-loading';
+import { appContext } from '../contexts/context-provider';
+import GlobalLoading from './components/global-loading';
 
 export interface LayoutProps {
   children?: React.ReactNode;
@@ -11,7 +11,7 @@ export default function Layout(props: LayoutProps) {
 
   return (
     <>
-      <StickyLoading visible={ctx.state.isLoading} />
+      <GlobalLoading visible={ctx.contextState.isLoading} />
       {props.children}
     </>
   );

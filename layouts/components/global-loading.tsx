@@ -5,7 +5,7 @@ interface icontextLoading {
   visible: boolean | undefined;
 }
 
-export default function ContextLoading(props: icontextLoading) {
+export default function GlobalLoading(props: icontextLoading) {
   return (
     <LinearProgress
       color='secondary'

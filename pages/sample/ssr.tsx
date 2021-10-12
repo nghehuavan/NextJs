@@ -5,13 +5,13 @@ import {
   GetServerSidePropsResult,
 } from 'next';
 import Link from 'next/link';
-import mocklasbApis from '../../apis/mocklabApis';
+import sampleApi from '../../apis/sampleApi';
 import { Button } from '@mui/material';
 
 export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext
 ): Promise<GetServerSidePropsResult<any>> => {
-  const data = await mocklasbApis.getData({ _limit: 5 });
+  const data = await sampleApi.getData({ _limit: 5 });
 
   return {
     props: {
@@ -20,12 +20,12 @@ export const getServerSideProps: GetServerSideProps = async (
   };
 };
 
-export interface IndexSSRProps {
+export interface iSampleSSRProps {
   serverProps: any;
   children: React.ReactNode;
 }
 
-export default function IndexSSR(props: IndexSSRProps) {
+export default function SampleSSR(props: iSampleSSRProps) {
   const jsxPhotos = props.serverProps.map((photo: any, index: number) => {
     return (
       <React.Fragment key={index}>
@@ -44,14 +44,19 @@ export default function IndexSSR(props: IndexSSRProps) {
           home
         </Button>
       </Link>
-      <Link href='/try'>
+      <Link href='/sample'>
         <Button variant='contained' color='success'>
-          index
+          sample
         </Button>
       </Link>
-      <Link href='/try/index-ssr'>
+      <Link href='/sample/ssr'>
         <Button variant='contained' color='success'>
-          index-ssr
+          sample-ssr
+        </Button>
+      </Link>
+      <Link href='/sample/saga'>
+        <Button variant='contained' color='success'>
+          sample-saga
         </Button>
       </Link>
 
