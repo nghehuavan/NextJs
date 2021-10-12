@@ -1,7 +1,7 @@
 import sampleApi from '../../../apis/sampleApi';
 import { call, select, put } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
-import LoadingSagaAction from '../loading/loading-saga-action';
+import LoadingSagaAction from '../../reducer/loading/loading-saga-action';
 
 const SampleSagaAction = {
   SAGA_FETCH_LIST: 'SAGA_FETCH_LIST',

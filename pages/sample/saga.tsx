@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { appContext } from '../../contexts/context-provider';
 import StickyLoading from '../../layouts/components/sticky-loading';
 import Layout from '../../layouts/layout';
-import { iLoadingReducerStore } from '../../redux/reducer/loading-reducer';
-import { iSampleReducerStore } from '../../redux/reducer/sample-reducer';
+import { iLoadingReducerStore } from '../../redux/reducer/loading/loading-reducer';
+import { iSampleReducerStore } from '../../redux/reducer/sample/sample-reducer';
 import SampleSagaAction from '../../redux/saga/sample/sample-saga-action';
 
 export interface iSampleSagaProps {

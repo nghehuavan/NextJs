@@ -44,7 +44,7 @@ export default function Sample(props: iSampleProps) {
 
   const router = useRouter();
   const shadowLink = () => {
-    router.push('/try/index-ssr', undefined, { shallow: true });
+    router.push('/sample/ssr', undefined, { shallow: true });
   };
 
   const jsxPhotos = photos.map((photo: any, index: number) => {

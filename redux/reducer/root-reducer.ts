@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import LoadingReducer from './loading-reducer';
-import SampleReducer from './sample-reducer';
+import LoadingReducer from './loading/loading-reducer';
+import SampleReducer from './sample/sample-reducer';
 
 var RootReducer = combineReducers({
   LoadingStore: LoadingReducer,

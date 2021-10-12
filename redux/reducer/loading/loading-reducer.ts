@@ -1,4 +1,4 @@
-import LoadingSagaAction from '../saga/loading/loading-saga-action';
+import LoadingSagaAction from './loading-saga-action';
 
 export interface iLoadingReducerStore {
   LoadingStore: iLoadingReducerState;

@@ -1,4 +1,4 @@
-import SampleSagaAction from '../saga/sample/sample-saga-action';
+import SampleSagaAction from '../../saga/sample/sample-saga-action';
 
 export interface iSampleReducerStore {
   sampleStore: iSampleReducerState;
