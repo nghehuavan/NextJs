@@ -2,7 +2,6 @@ import { Button, Grid } from '@mui/material';
 import * as React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { appContext } from '../../contexts/context-provider';
-import GlobalLoading from '../../layouts/components/global-loading';
 import StickyLoading from '../../layouts/components/sticky-loading';
 import Layout from '../../layouts/layout';
 import { iLoadingReducerStore } from '../../redux/reducer/loading-reducer';
