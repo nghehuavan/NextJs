@@ -8,7 +8,7 @@ export interface reCAPTHCHAProps {
 }
 
 export default function reCAPTHCHA(props: reCAPTHCHAProps) {
-  const reCaptchaRef = React.useRef({});
+  const reCaptchaRef = React.useRef<any>({});
 
   const onResolved = (token: any) => {
     console.log(token);
