@@ -6,6 +6,7 @@ declare var window: any;
 export interface ReCaptchaProps {
   children?: React.ReactNode;
   onResolved: (token: any) => void;
+  executeOnLoad?: boolean;
 }
 
 export default function ReCaptcha(props: ReCaptchaProps) {
@@ -17,7 +18,7 @@ export default function ReCaptcha(props: ReCaptchaProps) {
           callback: props.onResolved,
         });
 
-        if (window && window.grecaptcha) {
+        if (window && window.grecaptcha && props.executeOnLoad === true) {
           window.grecaptcha.reset();
           window.grecaptcha.execute();
         }
@@ -40,6 +41,13 @@ export default function ReCaptcha(props: ReCaptchaProps) {
     }
   };
 
+  const execute = () => {
+    if (window && window.grecaptcha) {
+      window.grecaptcha.reset();
+      window.grecaptcha.execute();
+    }
+  };
+
   useEffect(() => {
     injectScript();
   }, []);
@@ -56,3 +64,4 @@ export default function ReCaptcha(props: ReCaptchaProps) {
     </>
   );
 }
+
