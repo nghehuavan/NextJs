@@ -8,14 +8,15 @@ export interface reCAPTHCHAProps {
 }
 
 export default function reCAPTHCHA(props: reCAPTHCHAProps) {
+  const reCaptchaRef = React.useRef({});
 
   const onResolved = (token: any) => {
     console.log(token);
   };
 
   const ReLoadToken = () => {
-    // console.log(childRef);
-    // childRef.current.execute();
+    console.log(reCaptchaRef);
+    reCaptchaRef.current.execute();
   };
 
   return (
@@ -23,7 +24,11 @@ export default function reCAPTHCHA(props: reCAPTHCHAProps) {
       <Button variant='contained' color='success' onClick={ReLoadToken}>
         Re Load Token reCapthcha
       </Button>
-      <ReCaptcha onResolved={onResolved} executeOnLoad={true}></ReCaptcha>
+      <ReCaptcha
+        ref={reCaptchaRef}
+        onResolved={onResolved}
+        executeOnLoad={true}
+      ></ReCaptcha>
     </>
   );
 }

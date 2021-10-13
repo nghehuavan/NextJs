@@ -9,7 +9,13 @@ export interface ReCaptchaProps {
   executeOnLoad?: boolean;
 }
 
-export default function ReCaptcha(props: ReCaptchaProps) {
+export interface ReCaptchaRef {
+  current: {
+    execute: () => void;
+  };
+}
+
+const ReCaptcha = (props: ReCaptchaProps, ref: any) => {
   const injectScript = () => {
     if (window && document) {
       window.___reCapthchaScriptLoaded = () => {
@@ -50,6 +56,8 @@ export default function ReCaptcha(props: ReCaptchaProps) {
 
   useEffect(() => {
     injectScript();
+    console.log(ref);
+    ref.current.execute = execute;
   }, []);
 
   // Render alway run on both side server and client
@@ -63,5 +71,6 @@ export default function ReCaptcha(props: ReCaptchaProps) {
       ></div>
     </>
   );
-}
+};
 
+export default React.forwardRef(ReCaptcha);
