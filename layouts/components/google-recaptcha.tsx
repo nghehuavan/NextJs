@@ -9,6 +9,8 @@ export interface ReCaptchaProps {
 }
 
 export default function ReCaptcha(props: ReCaptchaProps) {
+  var isRendered = React.useRef(false);
+
   const injectScript = () => {
     if (window && document) {
       window.___reCapthchaScriptLoaded = () => {
@@ -16,6 +18,8 @@ export default function ReCaptcha(props: ReCaptchaProps) {
           sitekey: process.env.NEXT_PUBLIC_RECAPTCHA,
           callback: props.onResolved,
         });
+
+        isRendered.current = true;
       };
 
       const isScriptExist = document.getElementById('recaptcha');
@@ -36,8 +40,11 @@ export default function ReCaptcha(props: ReCaptchaProps) {
 
   useEffect(() => {
     injectScript();
-    if (window.grecaptcha) window.grecaptcha.execute();
   }, []);
+
+  useEffect(() => {
+    if (window && window.grecaptcha) window.grecaptcha.execute();
+  }, [isRendered]);
 
   // Render alway run on both side server and client
   return (
