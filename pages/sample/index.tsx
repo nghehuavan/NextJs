@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Button, Grid } from '@mui/material';
 import { appContext } from '../../contexts/context-provider';
 import Layout from '../../layouts/layout';
-import { useRouter } from 'next/dist/client/router';
+import { useRouter } from 'next/router'
 import sampleApi from '../../apis/sampleApi';
 import StickyLoading from '../../layouts/components/sticky-loading';
 
