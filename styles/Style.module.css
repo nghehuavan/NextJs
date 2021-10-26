@@ -14,3 +14,11 @@
     background-color: #ECEDEF;
     animation: pulse 1.5s ease-in-out 0.5s infinite;
 }
+
+.skeleton-circle{
+    width: 200px;
+    height: 200px;
+    display: block;
+    background-color: #ECEDEF;
+    animation: pulse 1.5s ease-in-out 0.5s infinite;
+}
