@@ -42,7 +42,7 @@ const ReCaptcha = (props: ReCaptchaProps, ref: any) => {
     if (ref) ref.current.execute = execute;
 
     var waitForReady = setInterval(() => {
-      if (window && window.grecaptcha) {
+      if (window && window.grecaptcha && window.grecaptcha.render) {
         clearInterval(waitForReady);
 
         const container = document.getElementById('___reCapthchaContainer');
